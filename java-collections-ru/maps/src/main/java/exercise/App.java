@@ -12,20 +12,15 @@ class App {
         String[] words = sentence.split(" ");
         Map<String, Integer> hashMap = new HashMap<>();
 
-        for (String currentWord : words) {
-            var counter = 0;
-            for (String word : words) {
-                if (currentWord.equals(word)) {
-                    counter++;
-                }
-            }
-
-            hashMap.put(currentWord, counter);
+        for (String word : words) {
+            int counter = hashMap.getOrDefault(word, 0);
+            counter++;
+            hashMap.put(word, counter);
         }
         System.out.println(hashMap);
         return hashMap;
     }
-// hi
+
     public static String toString(Map<String, Integer> hashMap) {
         if (hashMap.isEmpty()) {
             return "{}";
